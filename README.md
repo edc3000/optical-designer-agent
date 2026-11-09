@@ -10,6 +10,7 @@
   <img alt="Pi SDK 1.5" src="https://img.shields.io/badge/agent-Pi%20SDK%201.5-6A3FC4">
   <img alt="three.js" src="https://img.shields.io/badge/3D-three.js-000000?logo=threedotjs&logoColor=white">
   <img alt="OpenAI-compatible" src="https://img.shields.io/badge/LLM-OpenAI%20%E5%85%BC%E5%AE%B9-412991">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
 </p>
 
 <p align="center">
@@ -76,6 +77,7 @@ LLMs/
 
 ```bash
 git clone https://github.com/FrankLyu/Optical-Layout-Designer.git
+git clone https://github.com/edc3000/optical-designer-agent.git
 cd optical-designer-agent
 
 python3.13 -m venv .venv
@@ -269,3 +271,7 @@ OPTAGENT_BASE_URL=http://127.0.0.1:8790/v1 OPTAGENT_API_KEY=mock OPTAGENT_MODEL=
 - [Optical-Layout-Designer](https://github.com/FrankLyu/Optical-Layout-Designer)（Jiahao Lyu，MIT License）提供布局格式、2D 绘制、自动转角和 3D 模型。3D 视图中使用的厂商网格版权归各制造商所有，详见上游项目说明。
 - [Pi](https://github.com/earendil-works/pi) 提供 agent 运行框架。
 - [three.js](https://threejs.org/) 提供浏览器端 3D 显示。
+
+## 许可证
+
+本项目代码以 [MIT License](LICENSE) 发布。运行时依赖的上游项目及其中的厂商 3D 网格遵循各自的许可，本仓库不包含这些文件。
