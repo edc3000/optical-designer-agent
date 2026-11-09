@@ -1,0 +1,3 @@
+PySide6>=6.6
+pyvista>=0.44
+pytest>=8

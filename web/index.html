@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>光路设计 Agent</title>
+<link rel="stylesheet" href="/static/style.css">
+<script type="importmap">
+{ "imports": { "three": "/vendor/three/build/three.module.js", "three/addons/": "/vendor/three/examples/jsm/" } }
+</script>
+</head>
+<body>
+<header class="bar">
+  <h1>光路设计 Agent</h1>
+  <p class="tag">一句话描述光路，生成面包板上的 2D 布局与 3D 渲染</p>
+  <span class="model" id="model" title="当前使用的模型"></span>
+  <button type="button" class="ghost" id="newConv">新对话</button>
+</header>
+
+<main class="app">
+  <section class="chat" aria-label="对话">
+    <div class="log" id="log" aria-live="polite">
+      <div class="hello" id="hello">
+        <p>描述你想要的光路，agent 会设计元件和间距，自动检查后出图。</p>
+        <p class="hint">可以接着追问修改，比如「焦距改成 150 mm」或「在频谱面加一个光阑」。</p>
+      </div>
+    </div>
+    <div class="suggest" id="suggest">
+      <button type="button" data-prompt="做一个4f光路系统">做一个 4f 光路系统</button>
+      <button type="button" data-prompt="做一个AOM双通光路">做一个 AOM 双通光路</button>
+      <button type="button" data-prompt="做一个保偏光纤耦合光路">做一个光纤耦合光路</button>
+    </div>
+    <form class="compose" id="compose">
+      <textarea id="input" rows="2" placeholder="例如：做一个 4f 光路系统，两个透镜焦距都是 100 mm" aria-label="描述光路"></textarea>
+      <button type="submit" id="send">发送</button>
+    </form>
+  </section>
+
+  <section class="stage" aria-label="布局图">
+    <div class="stage-head">
+      <div class="versions" id="versions" role="tablist" aria-label="构建版本"></div>
+      <label class="compare" id="compareWrap" hidden><input type="checkbox" id="compare"> 与上一个通过的版本对比</label>
+      <div class="downloads" id="downloads" hidden>
+        <a id="dlJson" download>下载布局文件</a>
+        <a id="dlSvg" target="_blank" rel="noopener">2D 矢量图</a>
+      </div>
+    </div>
+
+    <div class="empty" id="empty">
+      <p>布局图会出现在这里</p>
+      <p class="hint">没有配置模型，或现场网络不稳时，可以直接加载已校验的示例：</p>
+      <div class="offline" id="offline"></div>
+    </div>
+
+    <div class="views" id="views" hidden>
+      <figure class="view">
+        <figcaption>2D 布局 <span id="cap2d"></span></figcaption>
+        <div class="pics" id="pics2d"></div>
+      </figure>
+      <figure class="view">
+        <figcaption>3D 视图
+          <span class="mode" role="group" aria-label="3D 显示方式">
+            <button type="button" id="mode3dLive" aria-pressed="true">可拖动</button><button type="button" id="mode3dPic" aria-pressed="false">渲染图</button>
+          </span>
+          <button type="button" class="reset" id="reset3d">回到默认视角</button>
+          <span class="help" id="help3d">拖动旋转 · 滚轮缩放 · 右键平移 · 悬停查看元件</span>
+        </figcaption>
+        <div class="live3d" id="live3d"></div>
+        <div class="pics" id="pics3d"></div>
+      </figure>
+      <details class="facts" id="facts">
+        <summary>元件位置与光程</summary>
+        <pre id="summary"></pre>
+        <details class="spec"><summary>agent 提交的光路描述</summary><pre id="spec"></pre></details>
+      </details>
+    </div>
+  </section>
+</main>
+
+<dialog id="zoom" aria-label="放大查看"><img id="zoomImg" alt=""><button type="button" id="zoomClose">关闭</button></dialog>
+<script type="module" src="/static/viewer.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

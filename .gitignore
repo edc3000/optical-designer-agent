@@ -1,0 +1,9 @@
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+.env
+runs/
+dist/
+.pi-agent/
+.pytest_cache/

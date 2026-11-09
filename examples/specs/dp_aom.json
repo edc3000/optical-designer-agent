@@ -1,0 +1,19 @@
+{
+  "title": "AOM 双通（猫眼，f = 150 mm）",
+  "wavelength_nm": 780,
+  "paths": [
+    {"id": "main", "dir": 0, "steps": [
+      {"part": "laser", "label": "LAS1"},
+      {"go": 60, "part": "hwp", "label": "HWP1", "note": "调节进入 AOM 的功率"},
+      {"go": 50, "part": "pbs", "label": "PBS1"},
+      {"go": 80, "part": "aom", "label": "AOM1", "note": "+1 级"},
+      {"go": 150, "part": "lens", "label": "LD1", "f": 150, "note": "猫眼透镜"},
+      {"go": 110, "part": "qwp", "label": "QWP1"},
+      {"go": 40, "part": "mirror", "label": "MR1", "turn": "back", "note": "回射镜"}
+    ]},
+    {"id": "return", "from": "PBS1", "turn": "right", "steps": [
+      {"go": 100, "part": "mirror", "label": "MOUT", "turn": "left"},
+      {"go": 300, "part": "iris", "label": "OUT", "note": "双通输出"}
+    ]}
+  ]
+}

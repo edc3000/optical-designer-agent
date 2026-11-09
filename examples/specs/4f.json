@@ -1,0 +1,19 @@
+{
+  "title": "4f 成像系统（f = 100 mm）",
+  "wavelength_nm": 532,
+  "paths": [
+    {"id": "main", "dir": 0, "steps": [
+      {"part": "laser", "label": "LAS1", "note": "532 nm 准直光源"},
+      {"go": 80, "part": "iris", "label": "物面", "note": "物体 / 样品"},
+      {"go": 100, "part": "lens", "label": "L1", "f": 100},
+      {"go": 100, "part": "iris", "label": "频谱面", "note": "傅里叶面，可放空间滤波器"},
+      {"go": 100, "part": "lens", "label": "L2", "f": 100},
+      {"go": 100, "part": "photodiode", "label": "CAM", "note": "像面：相机"}
+    ]}
+  ],
+  "constraints": [
+    {"type": "distance", "a": "物面", "b": "L1", "mm": 100},
+    {"type": "distance", "a": "L1", "b": "L2", "mm": 200},
+    {"type": "distance", "a": "L2", "b": "CAM", "mm": 100}
+  ]
+}

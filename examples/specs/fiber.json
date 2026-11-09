@@ -1,0 +1,14 @@
+{
+  "title": "光纤耦合",
+  "wavelength_nm": 780,
+  "paths": [
+    {"id": "main", "dir": 0, "steps": [
+      {"part": "laser", "label": "LAS1"},
+      {"go": 120, "part": "mirror", "label": "MA", "turn": "left", "note": "导向镜 1"},
+      {"go": 150, "part": "mirror", "label": "MB", "turn": "right", "note": "导向镜 2"},
+      {"go": 60, "part": "qwp", "label": "QWP1", "note": "保偏光纤偏振对准"},
+      {"go": 40, "part": "hwp", "label": "HWP1"},
+      {"go": 100, "part": "fiber", "label": "FC1"}
+    ]}
+  ]
+}
